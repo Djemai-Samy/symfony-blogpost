@@ -1,4 +1,5 @@
 import './bootstrap.js';
+import './navbar.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -7,4 +8,15 @@ import './bootstrap.js';
  */
 import './styles/app.css';
 
-console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
+
+// Navbar menu interaction
+const menuButton = document.querySelector('#navbar-menu-button');
+menuButton.addEventListener('click', () => {
+    const menu = document.querySelector('#navbar-menu');
+
+    if (menu.style.left == "0%") {
+        menu.style.left = "-100%";
+    } else {
+        menu.style.left = "0%";
+    }
+})
