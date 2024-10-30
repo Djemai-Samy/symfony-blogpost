@@ -10,7 +10,7 @@
 }
 
 .navbar {
-    background-color: purple;
+    background-color: rgb(231, 231, 231);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -21,7 +21,7 @@
     display: flex;
     padding-right: 10px;
     gap: 10px;
-    color: white;
+    color: rgb(12, 12, 12);
     transition: all 0.2s ease-in-out;
 }
 
@@ -38,7 +38,7 @@
         flex-direction: column;
         position: absolute;
         top: 45px;
-        background-color: purple;
+        background-color: rgb(227, 227, 227);
         min-width: 50vw;
         min-height: 50vh;
         padding: 10px;
