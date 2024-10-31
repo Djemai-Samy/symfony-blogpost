@@ -19,6 +19,10 @@ class AuthController extends AbstractController
     #[Route('/auth', name: 'app_signup')]
     public function index(Request $req, UserRepository $repo, UserPasswordHasherInterface $paswordHasher): Response
     {
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app_profil');
+        }
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 
@@ -31,7 +35,7 @@ class AuthController extends AbstractController
             if ($userInDB) {
                 return $this->render('pages/auth/index.html.twig', [
                     "inscriptionForm" => $form,
-                    "message" => "Vous êtes deja membre, connectez-vous!"
+                    "message" => ["status" => 'error', "content" => 'Vous êtes déja membre? Connectez-vous!']
                 ]);
             }
             $hashedPassword = $paswordHasher->hashPassword($user, $user->getPassword());
@@ -40,15 +44,26 @@ class AuthController extends AbstractController
         }
 
         return $this->render('pages/auth/index.html.twig', [
-            "inscriptionForm" => $form
+            "inscriptionForm" => $form,
+            "message" => ["status" => 'success', "content" => 'Inscription réussie, connectez-vous!']
         ]);
     }
-}
 
-// Exercice:
-// 1. Créer le Hero avec image et présentation.
-// 2. Créer un Formulaire avec: email, message (Avec Validation)
-// 3. Afficher le formulaire dans la page d'Accueil.
-// 4. Créer une Entité et son Repository et faites une migration
-// 5. Créer une route pour traiter le formulaire.
-// 6. Enregistrer les données la BD.
+    #[Route('/login', name: 'app_login')]
+    function connexion()
+    {
+        return new Response("Connexion réussie");
+    }
+
+    #[Route('/profil', name: 'app_profil')]
+    function showProfile()
+    {
+        if (!$this->isGranted("IS_AUTHENTICATED_FULLY")) {
+            return $this->redirectToRoute('app_signup');
+        }
+        return $this->render('pages/profil/index.html.twig');
+    }
+
+    #[Route('/logout', name: 'app_logout')]
+    public function logout() {}
+}
