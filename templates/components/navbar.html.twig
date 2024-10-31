@@ -9,27 +9,25 @@
 
 	<ul id="navbar-menu" style="left:-100%">
 		<li>
-			<a href="/">Accueil</a>
+			<a href="/" class="text-lg hover:text-indigo-700">Accueil</a>
 		</li>
 		<li>
-			<a href="/contact">Contact</a>
+			<a href="/auth" class="text-lg hover:text-indigo-700">Authentification</a>
 		</li>
-		<li>
-			<a href="/about">A propos</a>
-		</li>
+		
 	</ul>
 </nav>
 
 <script>
 	// Navbar menu interaction
-const menuButton = document.querySelector('#navbar-menu-button');
+	const menuButton = document.querySelector('#navbar-menu-button');
 	menuButton.addEventListener('click', () => {
-	const menu = document.querySelector('#navbar-menu');
+		const menu = document.querySelector('#navbar-menu');
 
-	if (menu.style.left == "0%") {
-	menu.style.left = "-100%";
-	} else {
-	menu.style.left = "0%";
-	}
+		if (menu.style.left == "0%") {
+			menu.style.left = "-100%";
+		} else {
+			menu.style.left = "0%";
+		}
 	})
 </script>
