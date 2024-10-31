@@ -41,7 +41,9 @@ class UserType extends AbstractType
                 PasswordType::class,
                 [
                     'attr' => ['placeholder' => "Entrez votre mot de passe."],
-                    'constraints' => [new Assert\Length(["min" => 6, "minMessage" => "Le pseudo est trop court (Min. 6 caractères)"])]
+                    'constraints' => [
+                        new Assert\Length(["min" => 6, "minMessage" => "Le mot de passe est trop court (Min. 6 caractères)"])
+                    ]
                 ]
             )
             ->add('submit', SubmitType::class, [
