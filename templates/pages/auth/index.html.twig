@@ -1,0 +1,38 @@
+{% extends 'pages/base.html.twig' %}
+
+{% block title %}
+	Blog - Page de connexion
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-indigo-700 text-5xl font-bold text-center hidden">Authentifiez vous!</h1>
+
+	<section class="flex flex-col w-screen max-w-[500px] bg-neutral-100 p-8 m-auto my-4 rounded drop-shadow-md">
+		<h2 class="text-indigo-700 text-3xl font-bold text-center border-b-2 py-2 mb-8">Inscription</h2>
+
+		{{form_start(inscriptionForm, {"attr":{"class":'flex flex-col gap-4'}})}}
+
+		{{form_label(inscriptionForm.email)}}
+		{{form_widget(inscriptionForm.email, { attr: {class: 'p-2 rounded'} }) }}
+		<div class="text-red-400 text-md">
+			{{form_errors(inscriptionForm.email)}}
+		</div>
+
+		{{form_label(inscriptionForm.username)}}
+		{{form_widget(inscriptionForm.username, { attr: {class: 'p-2 rounded w-full'} }) }}
+		<div class="text-red-400 text-md">
+			{{form_errors(inscriptionForm.username)}}
+		</div>
+
+		{{form_label(inscriptionForm.password)}}
+		{{form_widget(inscriptionForm.password, { attr: {class: 'p-2 rounded w-full'} }) }}
+		<div class="text-red-400 text-md">
+			{{form_errors(inscriptionForm.password,)}}
+		</div>
+
+		{{form_widget(inscriptionForm.submit, 
+		{ attr: {class: 'bg-indigo-500 p-2 text-neutral-100 rounded hover:bg-indigo-400 transition'} }) }}
+
+		{{form_end(inscriptionForm)}}
+	</section>
+{% endblock %}
