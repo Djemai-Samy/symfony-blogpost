@@ -14,5 +14,19 @@
 			{{app.user.username}}
 		</p>
 	</section>
+	<section>
+		{{form(articleForm)}}
+		</section>
 
-</section>{% endblock %}
+		<section>
+			{% for article in articles %}
+				<div class="p-4 bg-neutral-200 flex flex-col justify-center m-4 rounded">
+					<h3 class="text-4xl">{{article.titre}}</h3>
+					{% if article.contenu %}
+						<p>{{article.contenu}}</p>
+					{% endif %}
+					<p>{{article.date|date("m/d/Y - H:i")}}</p>
+				</div>
+			{% endfor %}
+		</section>
+	{% endblock %}
